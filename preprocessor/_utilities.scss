@@ -1,0 +1,49 @@
+@font-face {
+    font-family: "digital";
+    src: url(../fonts/digital.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+$gray-100: #111;
+$gray-200: #222;
+
+$dark-red: #3b0e24;
+$red: #c40909;
+$red-100: #8d0c0c;
+$cyan-on: rgb(59, 214, 168);
+$cyan-off: rgb(57, 80, 73);
+
+
+@mixin positioning($position: absolute, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin flexible-box(
+    $direction: row,
+    $wrap: no-wrap, 
+    $justify-content: flex-start, 
+    $align-items: stretch,
+    $align-content: flex-start) {
+        display: flex;
+        flex-direction: $direction;
+        flex-wrap: $wrap;
+        justify-content: $justify-content;
+        align-items: $align-items;
+        align-content: $align-content;
+}
+
+@mixin area($width: null, $height: $width) {
+    width: $width;
+    height: $height;
+}
+

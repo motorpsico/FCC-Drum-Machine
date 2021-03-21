@@ -1,0 +1,351 @@
+@import "utilities";
+
+body {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("../images/fondo.jpg");
+    // background-image: url("../images/partituraBateria.jpg"), url("../images/table1.jpg");
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+#drum-machine {
+    background-color: $gray-100;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 550px;
+    padding: 1em;
+    box-shadow: 0px 10px 25px 5px rgb(26, 24, 24);
+}
+
+.header {
+    @include flexible-box($align-items: center);
+    color: white;
+    user-select: none;
+}
+
+.brand {
+    font-family: "Wallpoet", fantasy;
+    font-size: 3rem;
+    user-select: none;
+}
+
+.model {
+    font-style: italic;
+    margin-left: 1rem;
+    user-select: none;
+}
+
+.btn-power {
+    margin-left: auto;
+    padding: 1rem;
+    background-color: $dark-red;
+    border-radius: 0.3rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+.btn-power.on {
+    background-color: $red;
+    box-shadow: 0 0 10px 3px $red;
+}
+
+.lcd-decoration {
+    margin: 1rem 0;
+    height: 10px;
+    background-color: $dark-red;
+    border: none;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.lcd-decoration.on {
+    background-color: $red-100;
+}
+
+.lcd-decoration.on::before {
+    @include positioning();
+    content: " ";
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    
+    
+}
+
+.lcd-decoration.on::before {
+    background-color: red;
+    border-radius: 1em;
+    box-shadow: 0 0 20px 50px red;
+    animation-name: lcdmove;
+    animation-duration: 0.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes lcdmove {
+    from {
+        left: 0;
+    }
+    to {
+        left: 150%;
+    }
+}
+
+.description {
+    @include flexible-box(row, no-wrap, space-around);
+    margin-bottom: 1em;
+    color: lightgray;
+    font-family: consolas, sans-serif;
+}
+
+.description h3 {
+    margin-right: 100px
+}
+
+.main-controls {
+    @include flexible-box(row, wrap, $align-items: center, $justify-content: space-between);
+    height: 100px;
+    
+}
+
+.main-controls {
+    .display, .volume, .sound-banks {
+        width: 30%;
+        height: 100%;
+        user-select: none;
+    }
+
+    .display {
+        @include flexible-box($justify-content: center, $align-items: center);
+        height: 80%;
+        background-color: $cyan-off;
+        // border: 3px ridge rgb(48, 46, 46);
+        border-radius: 0.5rem;
+        font-family: digital, fantasy;
+        font-size: 1.5rem;
+        overflow: auto;
+        user-select: none;
+    }
+
+    .volume {
+       background-color: $gray-100;
+       @include flexible-box($direction: column);
+       font-family: digital, fantasy;
+       &__btn-up {
+           margin: 0 1.5rem;
+           height: 20%;
+           background-image: linear-gradient(to top, rgb(61, 56, 56), rgb(131, 126, 126));
+           clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+           border-radius: 2rem;
+           cursor: pointer;
+           &:active {
+               transform: translateY(2px);
+           }
+       }
+       &__btn-down {
+           margin: 0 1.5rem;
+           height: 20%;
+           background-image: linear-gradient(to top, rgb(131, 126, 126), rgb(61, 56, 56));
+           clip-path: polygon(50% 100%, 0 0, 100% 0);
+           border-radius: 2rem;
+           cursor: pointer;
+           &:active {
+            transform: translateY(2px);
+           }
+       }
+       &__display {
+           @include flexible-box($justify-content: center, $align-items: center);
+           
+           background-color: $cyan-off;
+           
+           border-radius: 0.5rem;
+           height: 70%;
+           margin: 0.3em 0;
+           font-size: 2.5rem;
+           
+           text-align: center;
+       }
+    }
+
+    .sound-banks {
+        @include flexible-box($direction: column, $justify-content: space-around, $align-items: flex-start);
+        
+        
+        .banks {
+            @include flexible-box($justify-content: space-around, $align-items: center);
+            width: 100%;
+            height: 50%;
+            
+        }
+        .bank {
+            width: 40px;
+            height: 40px;
+            background-color: $dark-red;
+            border-radius: 50%;
+        }
+
+        .bank.on {
+           background-color: $red;
+           box-shadow: 0 0 50px 2px $red;
+        }
+
+      }
+
+      .switch-container {
+          color: lightgray;
+          height: 50%;
+          width: 100%;
+          @include flexible-box($align-items: center, $justify-content: space-around);
+          
+      }
+
+      .switch {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 90px;
+        height: 30px;
+        border: 3px ridge rgb(32, 29, 29);
+        border-radius: 0.8rem;
+        background-color: rgb(26, 23, 23);
+      }
+      
+      .switch__line {
+        @include positioning();
+        z-index: 0;
+        margin-left: 7px;
+        height: 1px;
+        width: 80%;
+        background-color: rgb(15, 15, 15);
+        border: 1px inset rgb(68, 63, 63);
+        
+      }
+      
+      .switch__pin {
+        @include positioning();
+        z-index: 1;
+        
+        width: 35px;
+        height: 20px;
+        background-image: linear-gradient(to right, gray 50%, darkgray 50%);
+        background-size: 5px;
+        border: 2px ridge rgb(46, 43, 43);
+        border-radius: 0.5em;
+        cursor: pointer;
+      }
+}
+
+.switch-right {
+    animation-name: moveToRight;
+    animation-duration: 0.1s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+.switch-left {
+    animation-name: moveToLeft;
+    animation-duration: 0.1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+@keyframes moveToRight {
+    from {left: 1%;}
+    to {left: 50%;} 
+}
+
+@keyframes moveToLeft {
+    from {left: 50%;}
+    to {left: 1%;} 
+}
+
+
+.main-controls.on {
+
+    .display {
+        background-color: $cyan-on;
+        box-shadow: 0 0 10px 1px $cyan-on;
+    }
+
+    .volume__display {
+        background-color: $cyan-on;
+        box-shadow: 0 0 10px 1px $cyan-on;
+    }
+
+}
+
+.pads {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin-top: 1rem;
+    height: 300px;
+}
+
+.drum-pad {
+    @include flexible-box($justify-content: center, $align-items: center);
+    background-color: rgb(31, 27, 27);
+    color: lightgray;
+    cursor: pointer;
+    user-select: none;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.pads.on .drum-pad.activated {
+   animation-name: activated;
+   animation-duration: 0.15s;
+   animation-timing-function: linear;
+   animation-fill-mode: forwards;
+    
+}
+
+
+@keyframes activated {
+    0% {
+        background-color: rgb(31, 27, 27);
+        box-shadow: 0 0 5px 3px transparent;
+    }
+    50% {
+        background-color: rgb(172, 34, 34);
+        box-shadow: 0 0 5px 3px $red;
+    }
+    100% {
+        background-color: rgb(31, 27, 27);
+        box-shadow: 0 0 5px 3px transparent;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 12px;
+        
+    }
+
+   .brand {
+       font-size: 2rem;
+   }
+
+   .header {
+       flex-direction: column;
+   }
+
+   .description h3 {
+       margin: 0;
+   }
+
+    
+
+    
+}
+

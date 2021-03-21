@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum machine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    <main id="drum-machine">
+        <header class="header">
+            <h1 class="brand">ZooM-bie</h1>
+            <h2 class="model">x-G1</h2>
+            <a id="btn-power" class="btn-power">On/Off</a>
+        </header>
+        <hr class="lcd-decoration" />
+        <div class="description">
+            <h3>Volume</h3>
+            <h3>Display</h3>
+            <h3>Banks</h3>
+        </div>
+        <div class="main-controls">
+            
+            <div class="volume">
+                <a class="volume__btn-up"></a>
+                <div class="volume__display"></div>
+                <a class="volume__btn-down"></a>
+            </div>
+            <div id="display" class="display"></div>
+            
+            <div class="sound-banks">
+                <div class="banks">
+                    <div class="bank" id="bank1"></div>
+                    <div class="bank" id="bank2"></div>
+                </div>
+                <div class="switch-container">
+                    <span class="label-left">B1</span>
+                    <div class="switch ">
+                        <div class="switch__pin"></div>
+                        <hr class="switch__line" />
+                    </div>
+                    <span class="label-left">B2</span>
+                </div>
+            </div>
+        </div>
+        <div class="pads">
+            <a class="drum-pad" data-letter="Q">Q
+                <audio src="" class="clip" id="Q"></audio>
+            </a>
+            <a class="drum-pad" data-letter="W">W
+                <audio src="" class="clip" id="W"></audio>
+            </a>
+            <a class="drum-pad" data-letter="E">E
+                <audio src="" class="clip" id="E"></audio>
+            </a>
+            <a class="drum-pad" data-letter="A">A
+                <audio src="" class="clip" id="A"></audio>
+            </a>
+            <a class="drum-pad" data-letter="S">S
+                <audio src="" class="clip" id="S"></audio>
+            </a>
+            <a class="drum-pad" data-letter="D">D
+                <audio src="" class="clip" id="D"></audio>
+            </a>
+            <a class="drum-pad" data-letter="Z">Z
+                <audio src="" class="clip" id="Z"></audio>
+            </a>
+            <a class="drum-pad" data-letter="X">X
+                <audio src="" class="clip" id="X"></audio>
+            </a>
+            <a class="drum-pad" data-letter="C">C
+                <audio src="" class="clip" id="C"></audio>
+            </a>
+        </div>
+    </main>
+</body>
+<script src="js/app.js"></script>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</html>
